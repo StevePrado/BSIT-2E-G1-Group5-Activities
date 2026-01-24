@@ -210,63 +210,93 @@
 
     </div>
 
-    <script>
-        const form = document.getElementById('dataForm');
-        const resultCard = document.getElementById('result-card');
-        const resultContent = document.getElementById('result-content');
-        const errorMessage = document.getElementById('error-message');
+<script>
+    const form = document.getElementById('dataForm');
+    const resultCard = document.getElementById('result-card');
+    const resultContent = document.getElementById('result-content');
+    const errorMessage = document.getElementById('error-message');
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-            const fullname = document.getElementById('fullname').value.trim();
-            const gender = document.getElementById('gender').value;
+        const fullname = document.getElementById('fullname').value.trim();
+        const gender = document.getElementById('gender').value;
+        const status = document.getElementById('status').value;
+        const email = document.getElementById('email').value;
+        const dob = document.getElementById('dob').value;
+        const mobile = document.getElementById('mobile').value.trim(); 
+        const address = document.getElementById('address').value.trim(); 
 
-            if (fullname === "" && gender === "") {
-                errorMessage.textContent = "Please enter Full Name and select Gender.";
-                errorMessage.style.display = "block";
-                resultCard.style.display = "none";
-                return; 
-            }
-            
-            if (fullname === "") {
-                errorMessage.textContent = "Please enter Full Name.";
-                errorMessage.style.display = "block";
-                resultCard.style.display = "none";
-                return;
-            }
+        errorMessage.style.display = "none";
+        resultCard.style.display = "none";
 
-            if (gender === "") {
-                errorMessage.textContent = "Please select Gender.";
-                errorMessage.style.display = "block";
-                resultCard.style.display = "none";
-                return;
-            }
 
-            errorMessage.style.display = "none";
+        if (fullname === "" && gender === "") {
+            showError("Please enter Full Name and select Gender.");
+            return;
+        }
 
-            const dob = document.getElementById('dob').value;
-            const status = document.getElementById('status').value;
-            const email = document.getElementById('email').value;
-            const mobile = document.getElementById('mobile').value;
-            const address = document.getElementById('address').value;
+        if (fullname === "") {
+            showError("Please enter Full Name.");
+            return;
+        }
 
-            const resultHTML = `
-                <div class="result-item"><strong>Full Name:</strong> ${fullname}</div>
-                <div class="result-item"><strong>Date of Birth:</strong> ${dob}</div>
-                <div class="result-item"><strong>Gender:</strong> ${gender}</div>
-                <div class="result-item"><strong>Status:</strong> ${status}</div>
-                <div class="result-item"><strong>Email:</strong> ${email}</div>
-                <div class="result-item"><strong>Mobile:</strong> ${mobile}</div>
-                <div class="result-item"><strong>Address:</strong> ${address}</div>
-            `;
+        if (gender === "") {
+            showError("Please select Gender.");
+            return;
+        }
 
-            resultContent.innerHTML = resultHTML;
-            resultCard.style.display = 'block'; 
-            
-            resultCard.scrollIntoView({ behavior: 'smooth' });
-        });
-    </script>
+        if (status === "") {
+            showError("Please select Status.");
+            return;
+        }
+
+        if (email === "") {
+            showError("Please enter email.");
+            return;
+        }
+
+        if (dob === "") {
+            showError("Please select Date.");
+            return;
+        }
+
+        if (mobile === "") {
+            showError("Please enter Mobile Number.");
+            return;
+        }
+        
+        if (mobile.length < 10) {
+            showError("Please enter a valid Mobile Number (at least 10 digits).");
+            return;
+        }
+
+        if (address === "") {
+            showError("Please enter Address.");
+            return;
+        }
+
+        const resultHTML = `
+            <div class="result-item"><strong>Full Name:</strong> ${fullname}</div>
+            <div class="result-item"><strong>Date of Birth:</strong> ${dob}</div>
+            <div class="result-item"><strong>Gender:</strong> ${gender}</div>
+            <div class="result-item"><strong>Status:</strong> ${status}</div>
+            <div class="result-item"><strong>Email:</strong> ${email}</div>
+            <div class="result-item"><strong>Mobile:</strong> ${mobile}</div>
+            <div class="result-item"><strong>Address:</strong> ${address}</div>
+        `;
+
+        resultContent.innerHTML = resultHTML;
+        resultCard.style.display = 'block';
+        resultCard.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function showError(msg) {
+        errorMessage.textContent = msg;
+        errorMessage.style.display = "block";
+        resultCard.style.display = "none";
+    }
+</script>
 
 </body>
 </html>
