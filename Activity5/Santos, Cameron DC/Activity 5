@@ -1,0 +1,23 @@
+<?php
+
+function item($qty, $desc, $amt) {
+    $total = $qty * $amt;
+    echo "(".$qty.") ".$desc."\t".$amt."\t".$total."\n";
+    return $total;
+}
+
+echo "<pre>";
+echo "QTY  DESC     AMT   Total\n";
+echo "-------------------------\n";
+
+$sum = 0;
+$sum += item(2, "ITEM 1", 100);
+$sum += item(7, "ITEM 2", 35);
+$sum += item(1, "ITEM 3", 350);
+$sum += item(2, "ITEM 4", 20);
+
+echo "-------------------------\n";
+echo "Overall Total\tPhp ".$sum;
+echo "</pre>";
+
+?>
