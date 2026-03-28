@@ -1,0 +1,49 @@
+/*feature css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.features {
+    background: linear-gradient(180deg, #0f4c81, #0b3a63);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 50px;
+}
+
+.exhibits {
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.exhibit {
+    text-align: center;
+    color: #ffffff;
+}
+
+.box {
+    width: 140px;
+    height: 140px;
+    border: 2px solid #ffffff;
+    margin: 0 auto 18px;
+}
+
+.title {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.exhibit p {
+    font-size: 14px;
+    opacity: 0.9;
+}
